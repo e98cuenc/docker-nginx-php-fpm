@@ -4,7 +4,7 @@ FROM qlustor/alpine-runit:3.3
 MAINTAINER Joaquin Cuenca Abela <e98cuenc@gmail.com>
 
 # Install nginx-php-fpm
-ADD . /
+ADD files /
 
 RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php-json php-memcache php-mysqli php-openssl php-gettext php-ctype php-xml php-phar php-dom mariadb strace redis inotify-tools gettext make && \
     rm -rf /var/www/* && \
