@@ -6,7 +6,7 @@ MAINTAINER Joaquin Cuenca Abela <e98cuenc@gmail.com>
 # Install nginx-php-fpm
 ADD . /
 
-RUN apk-install --no-cache --update nginx memcached php-fpm php-soap php-json php-memcache php-mysqli php-openssl php-gettext php-ctype mariadb && \
+RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php-json php-memcache php-mysqli php-openssl php-gettext php-ctype php-xml php-phar php-dom mariadb strace redis inotify-tools gettext make && \
     rm -rf /var/www/* && \
     mkdir -p /var/run/mysql && \
     chown mysql -R /var/run/mysql /etc/mysql/my.cnf && \
@@ -38,7 +38,6 @@ RUN apk-install --no-cache --update nginx memcached php-fpm php-soap php-json ph
         /usr/bin/replace \
         /usr/bin/resolve_stack_dump \
         /usr/bin/resolveip && \
-    rm -f /usr/bin/php && \
     sed -i -r \
         -e 's/group =.*/group = nginx/' \
         -e 's/user =.*/user = nginx/' \

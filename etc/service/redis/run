@@ -1,0 +1,5 @@
+#!/bin/sh
+exec 2>&1
+
+# This sets "save" to '', and disables the creation of dump.rdb
+exec /usr/bin/redis-server --save
