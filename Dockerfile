@@ -1,4 +1,4 @@
-#BUILDS qlustor/nginx-php-fpm
+# BUILDS e98cuenc/nginx-php-fpm
 
 FROM qlustor/alpine-runit:3.3
 MAINTAINER Joaquin Cuenca Abela <e98cuenc@gmail.com>
@@ -6,7 +6,7 @@ MAINTAINER Joaquin Cuenca Abela <e98cuenc@gmail.com>
 # Install nginx-php-fpm
 ADD files /
 
-RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php-json php-memcache php-mysqli php-openssl php-gettext php-ctype php-xml php-phar php-dom mariadb strace redis inotify-tools gettext make && \
+RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php-json php-memcache php-mysqli php-openssl php-gettext php-ctype php-xml php-phar php-dom mariadb strace redis inotify-tools gettext make git openssh perl && \
     rm -rf /var/www/* && \
     mkdir -p /var/run/mysql && \
     chown mysql -R /var/run/mysql /etc/mysql/my.cnf && \
