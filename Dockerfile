@@ -6,7 +6,7 @@ MAINTAINER Joaquin Cuenca Abela <e98cuenc@gmail.com>
 # Install nginx-php-fpm
 ADD files /
 
-RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php-json php-memcache php-mysqli php-openssl php-gettext php-ctype php-xml php-phar php-dom mariadb strace redis inotify-tools gettext make git openssh-client perl && \
+RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php-json php-memcache php-mysqli php-openssl php-gettext php-ctype php-xml php-phar php-dom mariadb strace redis inotify-tools gettext make git openssh-client perl bash && \
     rm -rf /var/www/* && \
     mkdir -p /var/run/mysql && \
     chown mysql -R /var/run/mysql /etc/mysql/my.cnf && \
@@ -52,8 +52,7 @@ RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php
         -e '/open_basedir =/s/^/\;/' \
         /etc/php/php.ini && \
     mkdir -p /run/nginx && \
-    chown -R nginx /run/nginx && \
-    ln -s /bin/sh /bin/bash
+    chown -R nginx /run/nginx
 
 EXPOSE 80 443 3306
 #VOLUME /var/www
