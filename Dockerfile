@@ -6,7 +6,7 @@ MAINTAINER Joaquin Cuenca Abela <e98cuenc@gmail.com>
 # Install nginx-php-fpm
 ADD files /
 
-RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php-json php-memcache php-mysqli php-openssl php-gettext php-ctype php-xml php-phar php-dom mariadb strace redis inotify-tools gettext make git openssh-client perl bash && \
+RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php-json php-memcache php-mysqli php-openssl php-gettext php-ctype php-xml php-phar php-dom mariadb mariadb-client strace redis inotify-tools gettext make git openssh-client perl bash && \
     rm -rf /var/www/* && \
     mkdir -p /var/run/mysql && \
     chown mysql -R /var/run/mysql /etc/mysql/my.cnf && \
@@ -30,7 +30,13 @@ RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php
         /usr/bin/mysql_plugin \
         /usr/bin/mysql_tzinfo_to_sql \
         /usr/bin/mysql_upgrade \
+        /usr/bin/mysql_waitpid \
+        /usr/bin/mysqladmin \
         /usr/bin/mysqlbinlog \
+        /usr/bin/mysqlcheck \
+        /usr/bin/mysqldump \
+        /usr/bin/mysqlimport \
+        /usr/bin/mysqlshow \
         /usr/bin/mysqlslap \
         /usr/bin/mysqltest \
         /usr/bin/mysqltest_embedded \
