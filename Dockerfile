@@ -57,8 +57,9 @@ RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php
     sed -i \
         -e '/open_basedir =/s/^/\;/' \
         /etc/php/php.ini && \
-    mkdir -p /run/nginx && \
-    chown -R nginx /run/nginx
+    mkdir -p /run/nginx /var/run/memcache && \
+    chown -R nginx /run/nginx && \
+    chown -R memcache /var/run/memcache
 
 EXPOSE 80 443 3306
 #VOLUME /var/www
