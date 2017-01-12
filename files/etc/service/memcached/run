@@ -1,4 +1,4 @@
 #!/bin/sh
 exec 2>&1
 
-exec /usr/bin/memcached -u memcached
+exec /usr/bin/memcached -u memcached -s /var/run/memcache/memcache.socket -a 0777
