@@ -59,7 +59,7 @@ RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php
         /etc/php/php.ini && \
     mkdir -p /run/nginx /var/run/memcache && \
     chown -R nginx /run/nginx && \
-    chown -R memcache /var/run/memcache
+    chown -R memcached /var/run/memcache
 
 EXPOSE 80 443 3306
 #VOLUME /var/www
