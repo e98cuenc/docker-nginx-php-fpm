@@ -62,6 +62,5 @@ RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php
     chown -R memcached /var/run/memcache
 
 EXPOSE 80 443 3306
-#VOLUME /var/www
+VOLUME /var/www
 ENTRYPOINT ["/sbin/runit-docker"]
-
