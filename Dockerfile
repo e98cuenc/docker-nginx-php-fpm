@@ -1,12 +1,12 @@
 # BUILDS e98cuenc/nginx-php-fpm
 
-FROM qlustor/alpine-runit:3.3
+FROM alpine:3.5
 MAINTAINER Joaquin Cuenca Abela <e98cuenc@gmail.com>
 
 # Install nginx-php-fpm
 ADD files /
 
-RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php-json php-memcache php-mysqli php-openssl php-gettext php-ctype php-xml php-phar php-dom php-curl mariadb mariadb-client strace redis inotify-tools gettext make git openssh-client perl bash jq nodejs && \
+RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-json php5-memcache php5-mysqli php5-openssl php5-gettext php5-ctype php5-xml php5-phar php5-dom php5-curl mariadb mariadb-client strace redis inotify-tools gettext make git openssh-client perl bash jq nodejs sphinx && \
     rm -rf /var/www/* && \
     mkdir -p /var/run/mysql && \
     chown mysql -R /var/run/mysql /etc/mysql/my.cnf && \
@@ -44,23 +44,10 @@ RUN apk-install --no-cache --update nginx memcached php-cli php-fpm php-soap php
         /usr/bin/replace \
         /usr/bin/resolve_stack_dump \
         /usr/bin/resolveip && \
-    sed -i -r \
-        -e 's/group =.*/group = nginx/' \
-        -e 's/user =.*/user = nginx/' \
-        -e 's/(; *)?listen\.owner.*/listen\.owner = nginx/' \
-        -e 's/(; *)?listen\.group.*/listen\.group = nginx/' \
-        -e 's/(; *)?listen\.mode.*/listen\.mode = 0660/' \
-        -e 's@(; *)?error_log =.*@error_log = /proc/self/fd/2@' \
-        -e 's@(; *)?access\.log =.*@access.log = /proc/self/fd/2@' \
-        -e 's@listen =.*@listen = /var/run/php5-fpm.sock@' \
-        /etc/php/php-fpm.conf && \
-    sed -i \
-        -e '/open_basedir =/s/^/\;/' \
-        /etc/php/php.ini && \
     mkdir -p /run/nginx /var/run/memcache && \
     chown -R nginx /run/nginx && \
     chown -R memcached /var/run/memcache
 
 EXPOSE 80 443 3306
 VOLUME /var/www
-ENTRYPOINT ["/sbin/runit-docker"]
+ENTRYPOINT ["runsvdir", "/etc/service"]
