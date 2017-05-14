@@ -1,5 +1,4 @@
 #!/bin/sh
 exec 2>&1
 
-exec /usr/bin/php-fpm --nodaemonize
-
+exec /usr/bin/php-fpm --nodaemonize --fpm-config=/etc/php5/php-fpm.conf
