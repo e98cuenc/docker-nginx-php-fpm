@@ -6,7 +6,13 @@ MAINTAINER Joaquin Cuenca Abela <e98cuenc@gmail.com>
 # Install nginx-php-fpm
 ADD files /
 
-RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-json php5-memcache php5-mysqli php5-openssl php5-gettext php5-ctype php5-xml php5-phar php5-dom php5-curl php5-opcache php5-gd mariadb mariadb-client strace redis inotify-tools gettext make git openssh-client perl bash jq nodejs sphinx curl && \
+RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-json php5-memcache \
+        php5-mysqli php5-openssl php5-gettext php5-ctype php5-xml php5-phar php5-dom php5-curl \
+        php5-opcache php5-gd mariadb mariadb-client strace redis inotify-tools gettext make git \
+        openssh-client perl bash jq nodejs sphinx curl \
+        groff less python py-pip && \
+    pip install awscli && \
+    apk --purge -v del py-pip && \
     touch /root/.bashrc && \
     curl -o- -L https://yarnpkg.com/install.sh | bash && \
     curl https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -o ngrok.zip && \
