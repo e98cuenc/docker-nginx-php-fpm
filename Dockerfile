@@ -22,6 +22,7 @@ RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-js
     rm -rf /var/www/* && \
     mkdir -p /var/run/mysql && \
     chown mysql -R /var/run/mysql /etc/mysql/my.cnf && \
+    update-ca-certificates && \
     mysql_install_db --user=mysql --datadir=/var/lib/mysql && \
     echo -e "USE mysql;\n\
              REPLACE INTO user VALUES ('%','root','','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','Y','','','','',0,0,0,0,'','','N','N','',0);\n" | \
