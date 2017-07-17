@@ -10,9 +10,9 @@ RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-js
         php5-mysqli php5-openssl php5-gettext php5-ctype php5-xml php5-phar php5-dom php5-curl \
         php5-opcache php5-gd mariadb mariadb-client strace redis inotify-tools gettext make git \
         openssh-client perl bash jq nodejs sphinx curl \
-        groff less python py-pip && \
-    pip install awscli && \
-    apk --purge -v del py-pip && \
+        groff less python py-pip g++ gcc libxslt libxslt-dev python-dev && \
+    pip install awscli cssselect requests futures lxml && \
+    apk --purge -v del py-pip g++ gcc python-dev libxslt-dev && \
     touch /root/.bashrc && \
     curl -o- -L https://yarnpkg.com/install.sh | bash && \
     curl https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -o ngrok.zip && \
