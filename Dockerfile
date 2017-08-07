@@ -9,7 +9,7 @@ ADD files /
 RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-json php5-memcache \
         php5-mysqli php5-openssl php5-gettext php5-ctype php5-xml php5-phar php5-dom php5-curl \
         php5-opcache php5-gd mariadb mariadb-client strace redis inotify-tools gettext make git \
-        openssh-client perl bash jq nodejs sphinx curl \
+        openssh-client perl bash jq nodejs sphinx curl bind-tools \
         groff less python py-pip g++ gcc libxslt libxslt-dev python-dev && \
     pip install awscli cssselect requests futures lxml && \
     apk --purge -v del py-pip g++ gcc python-dev libxslt-dev && \
