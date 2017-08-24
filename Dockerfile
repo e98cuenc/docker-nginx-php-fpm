@@ -11,6 +11,7 @@ RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-js
         php5-opcache php5-gd mariadb mariadb-client strace redis inotify-tools gettext make git \
         openssh-client perl bash jq nodejs sphinx curl bind-tools \
         groff less python py-pip g++ gcc libxslt libxslt-dev python-dev && \
+    apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv && \
     pip install awscli cssselect requests futures lxml && \
     apk --purge -v del py-pip g++ gcc python-dev libxslt-dev && \
     touch /root/.bashrc && \
@@ -63,4 +64,5 @@ RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-js
 
 EXPOSE 80 443 3306
 VOLUME /var/www
+ENV LD_PRELOAD /usr/lib/preloadable_libiconv.so php
 ENTRYPOINT ["runsvdir", "/etc/service"]
