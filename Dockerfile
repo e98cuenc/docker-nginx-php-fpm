@@ -12,7 +12,7 @@ RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-js
         openssh-client perl bash jq nodejs sphinx curl bind-tools \
         groff less python py-pip g++ gcc libxslt libxslt-dev python-dev && \
     apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing gnu-libiconv && \
-    pip install awscli cssselect requests futures lxml mysql-python && \
+    pip install awscli cssselect requests futures lxml mysql-python youtube-dl && \
     apk --purge -v del py-pip g++ gcc python-dev libxslt-dev mariadb-dev && \
     touch /root/.bashrc && \
     curl -o- -L https://yarnpkg.com/install.sh | bash && \
