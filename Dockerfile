@@ -59,7 +59,7 @@ RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-js
         /usr/bin/resolve_stack_dump \
         /usr/bin/resolveip && \
     mkdir -p /run/nginx /var/run/memcache /data && \
-    chown -R memcached /var/run/memcache
+    chown -R memcached /var/run/memcache && \
     addgroup -S apache && \
     adduser -D -S -G apache apache
 
