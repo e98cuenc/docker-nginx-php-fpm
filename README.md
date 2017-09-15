@@ -10,16 +10,16 @@ Pull or build the image yourself and run it. Before you do that you'll need to c
 
 ```
 # Build
-docker build -t qlustor/nginx-php-fpm .
+docker build -t e98cuenc/nginx-php-fpm .
 
 # Or pull
-docker pull qlustor/nginx-php-fpm
+docker pull e98cuenc/nginx-php-fpm
 
 # Run
-docker run -d -p 80:80 -p 443:443 --name nginx-php-fpm qlustor/nginx-php-fpm
+docker run -d -p 80:80 -p 443:443 --name nginx-php-fpm e98cuenc/nginx-php-fpm
 
 # Run with a mounted volume
-docker run -d -p 80:80 -p 443:443 -v $PATH:/var/www --name nginx-php-fpm qlustor/nginx-php-fpm
+docker run -d -p 80:80 -p 443:443 -v $PATH:/var/www --name nginx-php-fpm e98cuenc/nginx-php-fpm
 ```
 
 ## Bonus
