@@ -62,6 +62,7 @@ RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-js
     chown -R memcached /var/run/memcache && \
     addgroup -S apache && \
     adduser -D -S -G apache apache
+RUN ln -s /usr/bin/php /usr/bin/php56
 
 EXPOSE 80 443 3306
 VOLUME /var/www
