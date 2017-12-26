@@ -1,7 +1,7 @@
 # BUILDS e98cuenc/nginx-php-fpm
 
 FROM alpine:3.5
-MAINTAINER Joaquin Cuenca Abela <e98cuenc@gmail.com>
+LABEL maintainer="Joaquin Cuenca Abela <e98cuenc@gmail.com>"
 
 # Install nginx-php-fpm
 ADD files /
