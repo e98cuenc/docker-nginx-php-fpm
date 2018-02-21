@@ -61,7 +61,11 @@ RUN apk add --no-cache runit nginx memcached php5-cli php5-fpm php5-soap php5-js
     mkdir -p /run/nginx /var/run/memcache /data && \
     chown -R memcached /var/run/memcache && \
     addgroup -S apache && \
-    adduser -D -S -G apache apache
+    adduser -D -S -G apache apache && \
+    curl https://raw.githubusercontent.com/madnight/docker-alpine-wkhtmltopdf/master/wkhtmltopdf --output /bin/wkhtmltopdf && \
+    chmod +x /bin/wkhtmltopdf && \
+    apk add --update --no-cache libgcc libstdc++ libx11 glib libxrender libxext libintl libcrypto1.0 libssl1.0 ttf-dejavu ttf-droid ttf-freefont ttf-liberation ttf-ubuntu-font-family
+
 RUN ln -s /usr/bin/php /usr/bin/php56
 
 EXPOSE 80 443 3306
